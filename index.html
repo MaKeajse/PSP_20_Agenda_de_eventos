@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta Tags -->
+	<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendario | Agenda de Eventos</title>
+    <meta name="description"/>
+    
+	<!-- Favicon -->
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+	
+	<!-- Sweetalert2 CSS -->
+	<link href="vendors/@sweetalert2/theme-bootstrap-4/bootstrap-4.min.css" rel="stylesheet" type="text/css">
+	
+	<!-- Bootstrap Colorpicker -->
+    <link href="vendors/bootstrap-colorpicker/dist/css/bootstrap-colorpicker.min.css" rel="stylesheet" type="text/css" />
+		
+	<!-- Calendar CSS -->
+    <link href="vendors/fullcalendar/main.min.css" rel="stylesheet" type="text/css" />
+	
+	<!-- Daterangepicker CSS -->
+    <link href="vendors/daterangepicker/daterangepicker.css" rel="stylesheet" type="text/css" />
+
+	<!-- CSS -->
+    <link href="dist/css/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+   	<!-- Wrapper -->
+	<div class="hk-wrapper" data-menu="light" data-footer="simple" data-hover="active">		
+		<!-- Calendar Drawer -->
+        <div class="hk-drawer calendar-drawer drawer-right">			
+			<div>
+				<div class="drawer-header">
+					<div class="drawer-header-action">
+						<a href="#" id="edit_event" class="btn btn-sm btn-icon btn-flush-secondary btn-rounded flush-soft-hover"><span class="icon"><span class="feather-icon"><i data-feather="edit-2"></i></span></span></a>
+						<a href="#"  id="del_event" class="btn btn-sm btn-icon btn-flush-secondary btn-rounded flush-soft-hover"><span class="icon"><span class="feather-icon"><i data-feather="trash-2"></i></span></span></a>
+						<a href="#" class="btn btn-sm btn-icon btn-flush-secondary btn-rounded flush-soft-hover me-2"><span class="icon"><span class="feather-icon"><i data-feather="external-link"></i></span></span></a>
+						<button type="button" class="drawer-close btn-close">
+							<span aria-hidden="true">×</span>
+						</button>
+					</div>
+				</div>
+				<div class="drawer-body">
+					<div data-simplebar class="nicescroll-bar">
+						<div class="drawer-content-wrap">
+							<div class="event-head mb-4">
+								<span class="badge badge-violet badge-indicator badge-indicator-xl flex-shrink-0 me-2"></span>
+								<div>
+									<div class="event-name">Team Meet</div>
+									<span>Event</span>
+								</div>
+							</div>
+							<ul class="event-detail">
+								<li>
+									<span class="ev-icon-wrap"><span class="feather-icon"><i data-feather="calendar"></i></span></span>
+									Aug 18,2020 - Aug 19, 2020
+								</li>
+								<li>
+									<span class="ev-icon-wrap"><span class="feather-icon"><i data-feather="clock"></i></span></span>
+									8:40 AM - 5:40 PM
+								</li>
+								<li>
+									<span class="ev-icon-wrap"><span class="feather-icon"><i data-feather="map-pin"></i></span></span>
+									Oslo, Canada
+								</li>
+								<li>
+									<span class="ev-icon-wrap"><span class="feather-icon"><i data-feather="check-square"></i></span></span>
+									Meetings
+								</li>
+								<li>
+									<span class="ev-icon-wrap"><span class="feather-icon"><i data-feather="eye"></i></span></span>
+									Default Visibility
+								</li>
+								<li>
+									<span class="ev-icon-wrap"><span class="feather-icon"><i data-feather="user-plus"></i></span></span>
+									<div class="d-flex flex-wrap">
+										<div class="chip chip-primary user-chip mb-2 me-2">
+											<span>
+												<span class="avatar">
+													<img src="dist/img/avatar11.jpg" alt="user" class="avatar-img">
+												</span>
+												<span class="chip-text">Morgan</span>
+											</span>
+										</div>
+										<div class="chip chip-primary user-chip mb-2 me-2">
+											<span>
+												<span class="avatar">
+													<img src="dist/img/avatar12.jpg" alt="user" class="avatar-img">
+												</span>
+												<span class="chip-text">Charlie</span>
+											</span>
+										</div>
+										<div class="chip chip-primary user-chip mb-2 me-2">
+											<span>
+												<span class="avatar">
+													<img src="dist/img/avatar13.jpg" alt="user" class="avatar-img">
+												</span>
+												<span class="chip-text">Winston</span>
+											</span>
+										</div>
+									</div>
+								</li>
+								<li>
+									<span class="ev-icon-wrap"><span class="feather-icon"><i data-feather="menu"></i></span></span>
+									Annual meeting with global branch teams & bosses about growth planning and fiscal year reports
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="d-none">
+				<div class="drawer-header">
+					<div class="drawer-header-action">
+						<a href="#" class="btn btn-sm btn-icon btn-flush-secondary btn-rounded flush-soft-hover me-2"><span class="icon"><span class="feather-icon"><i data-feather="external-link"></i></span></span></a>
+						<button type="button" class="drawer-edit-close btn-close">
+							<span aria-hidden="true">×</span>
+						</button>
+					</div>
+				</div>
+				<div class="drawer-body">
+					<div data-simplebar class="nicescroll-bar">
+						<div class="drawer-content-wrap">
+							<div class="event-head mb-4">
+								<span class="badge badge-violet badge-indicator badge-indicator-xl flex-shrink-0 me-2"></span>
+								<div>
+									<div class="event-name" contenteditable="true">Team Meet</div>
+									<div class="form-group mt-2 mb-0">
+										<div class="form-check form-check-inline ps-0">
+											<div class="form-check">
+												<input type="radio" id="event_1" name="eventSelect" class="form-check-input" checked=""	>
+												<label class="form-check-label" for="event_1">Event</label>
+											</div>
+										</div>
+										<div class="form-check form-check-inline ps-0">
+											<div class="form-check">
+												<input type="radio" id="reminder_1" name="eventSelect" class="form-check-input" >
+												<label class="form-check-label" for="reminder_1">Reminder</label>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<form>
+								<div class="form-group">
+									<div class="input-group">
+										<span class="input-affix-wrapper">
+											<span class="input-prefix"><span class="feather-icon"><i data-feather="calendar"></i></span></span>
+											<input class="form-control form-wth-icon" name="datetimes" value="Aug 18,2020 - Aug 19, 2020">
+										</span>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="input-group">
+										<span class="input-affix-wrapper">
+											<span class="input-prefix"><span class="feather-icon"><i data-feather="clock"></i></span></span>
+											<input type="text" class="form-control form-wth-icon input-timepicker" value="8:40 AM - 5:40 PM" >
+										</span>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="input-group">
+										<span class="input-affix-wrapper">
+											<span class="input-prefix"><span class="feather-icon"><i data-feather="map-pin"></i></span></span>
+											<input type="text" class="form-control form-wth-icon" value="Oslo, Canada" >
+										</span>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="input-group">
+										<span class="input-affix-wrapper">
+											<span class="input-prefix"><span class="feather-icon"><i data-feather="check-square"></i></span></span>
+											<select class="form-select">
+												<option  selected="" value="1">All Time</option>
+												<option value="2">Half Day</option>
+												<option value="3">9 to 5</option>
+											</select>
+										</span>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="input-group">
+										<span class="input-affix-wrapper">
+											<span class="input-prefix"><span class="feather-icon"><i data-feather="eye"></i></span></span>
+											<select class="form-select">
+												<option selected="">Default Visibility</option>
+												<option value="1">Private</option>
+												<option value="2">Public</option>
+											</select>
+										</span>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="input-group color-picker">
+										<span class="input-group-text colorpicker-input-addon"><i></i></span>
+										<input type="text" class="form-control" value="#009B84"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="d-flex flex-wrap">
+										<div class="chip chip-primary chip-dismissable user-chip mb-2 me-2">
+											<span>
+												<span class="avatar">
+													<img src="dist/img/avatar11.jpg" alt="user" class="avatar-img">
+												</span>
+												<span class="chip-text">Morgan</span>
+												<button type="button" class="btn-close"></button>
+											</span>
+										</div>
+										<div class="chip chip-primary chip-dismissable user-chip mb-2 me-2">
+											<span>
+												<span class="avatar">
+													<img src="dist/img/avatar12.jpg" alt="user" class="avatar-img">
+												</span>
+												<span class="chip-text">Charlie</span>
+												<button type="button" class="btn-close"></button>
+											</span>
+										</div>
+										<div class="chip chip-primary chip-dismissable user-chip mb-2 me-2">
+											<span>
+												<span class="avatar">
+													<img src="dist/img/avatar13.jpg" alt="user" class="avatar-img">
+												</span>
+												<span class="chip-text">Winston</span>
+												<button type="button" class="btn-close"></button>
+											</span>
+										</div>
+										<input type="text" class="form-control border-0 p-0 shadow-none flex-1 mb-2 me-2"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<textarea class="form-control" rows="4">Annual meeting with global branch teams & bosses about growth planning and fiscal year reports</textarea>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="drawer-footer d-flex justify-content-end">
+					<button class="btn btn-secondary drawer-edit-close me-2">discard</button>
+					<button class="btn btn-primary drawer-edit-close">save</button>
+				</div>
+			</div>
+		</div>
+        <!-- /Calendar Drawer -->
+
+		<!-- Main Content -->
+		<div class="pb-0">
+			<!-- Page Body -->
+			<div class="hk-pg-body py-0">
+				<div class="calendarapp-wrap">
+					<nav class="calendarapp-sidebar">
+						<div class="text-center">
+							<a class="navbar-brand me-0" href="index.html">
+								<img class="brand-img d-inline-block" src="dist/img/logo-light.png" alt="brand" style="width: 100px; height: auto;">
+							</a>
+						</div>
+						<div data-simplebar class="nicescroll-bar">
+							<div class="menu-content-wrap">
+								<button class="btn btn-primary btn-rounded btn-block dropdown-toggle" data-bs-toggle="dropdown">Crear</button>
+								<div class="dropdown-menu">
+									<a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#create_new_event"><span class="feather-icon dropdown-icon"><i data-feather="calendar"></i></span><span>Agregar un evento</span></a>
+								</div>
+								<div class="text-center mt-4">
+									<div id="inline_calendar" class="d-inline-block">
+										<input class="form-control invisible position-absolute" type="text" name="calendar" value="" />
+									</div>
+								</div>
+								<div class="separator separator-light"></div>
+								<div class="title-sm text-primary">Próximos eventos</div>
+								<div class="upcoming-event-wrap">
+									<ul class="nav nav-light navbar-nav flex-column">
+										<li class="nav-item">
+											<a class="nav-link" href="#">
+												<div class="d-flex align-items-center">
+													<span class="badge badge-violet badge-indicator badge-indicator-lg me-2"></span>
+													<span class="event-time">Hoy, 5:00 en adelante</span>
+												</div>
+												<div class="event-name">Team Meet</div>
+											</a>
+										</li>	
+										<li class="nav-item">
+											<a class="nav-link" href="#">
+												<div class="d-flex align-items-center">
+													<span class="badge badge-primary badge-indicator badge-indicator-lg me-2"></span>
+													<span class="event-time">Mañana, 2:35 PM</span>
+												</div>
+												<div class="event-name">Vuelo a Bogota</div>
+											</a>
+										</li>	
+										<li class="nav-item">
+											<a class="nav-link" href="#">
+												<div class="d-flex align-items-center">
+													<span class="badge badge-warning badge-indicator badge-indicator-lg me-2"></span>
+													<span class="event-time">24 de julio, 9:30</span>
+												</div>
+												<div class="event-name">Conferencia Politecnico Grancolombiano</div>
+											</a>
+										</li>	
+									</ul>	
+								</div>
+								<div class="separator separator-light"></div>
+								<div class="d-flex align-items-center justify-content-between mb-2">
+									<div class="title-sm text-primary mb-0">Categorias</div>
+									<a href="#" class="btn btn-xs btn-icon btn-rounded btn-light" data-bs-toggle="modal" data-bs-target="#add_new_cat"><span class="icon" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Agregar Categoria"><span class="feather-icon"><i data-feather="plus"></i></span></span></a>
+								</div>
+								<div class="categories-wrap">
+									<div class="form-check">
+										<input type="checkbox" class="form-check-input" id="customChecksc1" checked="">
+										<label class="form-check-label" for="customChecksc1">Reuniones</label>
+									</div>
+									<div class="form-check">
+										<input type="checkbox" class="form-check-input" id="customChecksc2" checked="">
+										<label class="form-check-label" for="customChecksc2">Vuelos</label>
+									</div>
+									<div class="form-check">
+										<input type="checkbox" class="form-check-input" id="customChecksc3" checked="">
+										<label class="form-check-label" for="customChecksc3">Cumpleaños</label>
+									</div>
+									<div class="form-check">
+										<input type="checkbox" class="form-check-input" id="customChecksc4">
+										<label class="form-check-label" for="customChecksc4">Conferencias</label>
+									</div>
+								</div>
+							</div>
+						</div>
+						<!--Sidebar Fixnav-->
+						<div class="calendarapp-fixednav">
+							<div class="hk-toolbar">
+								<ul class="nav nav-light">
+									<li class="nav-item nav-link">
+										<a class="btn btn-icon btn-flush-dark btn-rounded flush-soft-hover" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Configuración" href="#"><span class="icon"><span class="feather-icon"><i data-feather="settings"></i></span></span></a>
+									</li>
+									<li class="nav-item nav-link">
+										<a href="#" class="btn btn-icon btn-rounded btn-flush-dark flush-soft-hover" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Archivo"><span class="icon"><span class="feather-icon"><i data-feather="archive"></i></span></span></a>
+									</li>
+									<li class="nav-item nav-link">
+										<a href="#" class="btn btn-icon btn-rounded btn-flush-dark flush-soft-hover" data-bs-toggle="tooltip" data-bs-placement="top" title="" data-bs-original-title="Ayuda"><span class="icon"><span class="feather-icon"><i data-feather="book"></i></span></span></a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<!--/ Sidebar Fixnav-->
+					</nav>
+					<div class="calendarapp-content">
+						<div id="calendar" class="w-100"></div>
+					</div>
+					
+					<!-- New Event -->
+					<div id="create_new_event" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+						<div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+							<div class="modal-content">
+								<div class="modal-body">
+									<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">×</span>
+									</button>
+									<h5 class="mb-4">Crear nuevo evento</h5>
+									<form>
+										<div class="row gx-3">
+											<div class="col-sm-12 form-group">
+												<label class="form-label">Nombre</label>
+												<input class="form-control  cal-event-name" type="text"/>
+											</div>
+										</div>
+										<div class="row gx-3">
+											<div class="col-sm-12 form-group">
+												<div class="form-label-group">
+													<label>Nota/Descriptción</label>
+													<small class="text-muted">200</small>
+												</div>
+												<textarea class="form-control" rows="3"></textarea>
+											</div>
+										</div>
+										<div class="row gx-3">
+											<div class="col-sm-6">
+												<div class="form-group">
+													<label class="form-label">Fecha Inicio</label>
+													<input class="form-control cal-event-date-start" name="single-date-pick" type="text"/>
+												</div>
+											</div>
+											<div class="col-sm-6">
+												<div class="form-group">
+													<label class="form-label">Hora Inicio</label>
+													<input class="form-control input-single-timepicker" name="input-timepicker" type="text"/>
+												</div>
+											</div>
+										</div>
+										<div class="row gx-3">
+											<div class="col-sm-6">
+												<div class="form-group">
+													<label class="form-label">Fecha Final</label>
+													<input class="form-control cal-event-date-end" name="single-date-pick" type="text"/>
+												</div>
+											</div>
+											<div class="col-sm-6">
+												<div class="form-group">
+													<label class="form-label">Hora Final</label>
+													<input class="form-control input-single-timepicker" type="text"/>
+												</div>
+											</div>
+										</div>
+										<div class="row gx-3">
+											<div class="col-sm-12">
+												<label class="form-label">Localización</label>
+												<div class="form-group">
+													<input class="form-control" type="text"/>
+												</div>	
+											</div>
+										</div>
+										<div class="row gx-3">
+											<div class="col-sm-5">
+												<div class="form-group">
+													<label class="form-label">Categoria</label>
+													<input class="form-control" type="text"/>
+												</div>
+											</div>
+											<div class="col-sm-7">
+												<div class="form-group">
+													<label class="form-label">Visibilidad</label>
+													<div class="d-flex">
+														<select class="form-select me-3">
+															<option selected="" value="2">Publico</option>
+															<option value="1">Privado</option>
+														</select>
+														<div class="input-group color-picker w-auto">
+															<span class="input-group-text colorpicker-input-addon rounded-3"><i></i></span>
+															<input type="text" class="form-control cal-event-color w-0 h-0 position-absolute opacity-0" value="#009B84"/>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="row gx-3">
+											<div class="col-sm-12">
+												<div class="form-inline">
+													<div class="form-group mt-3">
+														<label class="form-label">Prioridad:</label>
+														<div class="form-check form-check-inline">
+															<div class="form-check">
+																<input type="radio" id="customRadioc1" name="customRadioc2" class="form-check-input" checked=""	>
+																<label class="form-check-label" for="customRadioc1">Urgente</label>
+															</div>
+														</div>
+														<div class="form-check form-check-inline">
+															<div class="form-check">
+																<input type="radio" id="customRadioc2" name="customRadioc2" class="form-check-input" >
+																<label class="form-check-label" for="customRadioc2">Alta</label>
+															</div>
+														</div>
+														<div class="form-check form-check-inline">
+															<div class="form-check">
+																<input type="radio" id="customRadioc3" name="customRadioc2" class="form-check-input">
+																<label class="form-check-label" for="customRadioc3">Media</label>
+															</div>
+														</div>
+														<div class="form-check form-check-inline">
+															<div class="form-check">
+																<input type="radio" id="customRadioc4" name="customRadioc2" class="form-check-input">
+																<label class="form-check-label" for="customRadioc4">Baja</label>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+										
+									</form>
+								</div>
+								<div class="modal-footer align-items-center">
+									<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+									<button id="add_event" type="button" class="btn btn-primary fc-addEventButton-button" data-bs-dismiss="modal">Agregar</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- /New Event -->			
+					
+					
+					<!-- Add Category -->
+					<div id="add_new_cat" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+						<div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+							<div class="modal-content">
+								<div class="modal-body">
+									<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">×</span>
+									</button>
+									<h6 class="text-uppercase fw-bold mb-3">Agregar Categoria</h6>
+									<form>
+										<div class="row gx-3">
+											<div class="col-sm-12">
+												<div class="form-group">
+													<input class="form-control" type="text" placeholder="Nombre de la categoria"/>
+												</div>
+											</div>
+										</div>
+										<button type="button" class="btn btn-primary float-end" data-bs-dismiss="modal">Agregar</button>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!-- /Add Category -->
+				</div>
+			</div>
+			<!-- /Page Body -->
+		</div>
+		<!-- /Main Content -->
+	</div>
+    <!-- /Wrapper -->
+
+	<!-- jQuery -->
+    <script src="vendors/jquery/dist/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JS -->
+   	<script src="vendors/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- FeatherIcons JS -->
+    <script src="dist/js/feather.min.js"></script>
+
+    <!-- Fancy Dropdown JS -->
+    <script src="dist/js/dropdown-bootstrap-extended.js"></script>
+
+	<!-- Simplebar JS -->
+	<script src="vendors/simplebar/dist/simplebar.min.js"></script>
+	
+	<!-- Bootstrap Colorpicker JS -->
+	<script src="vendors/bootstrap-colorpicker/dist/js/bootstrap-colorpicker.min.js"></script>
+	<script src="dist/js/color-picker-data.js"></script>
+	
+	<!-- Fullcalendar JS -->
+    <script src="vendors/moment/min/moment.min.js"></script>
+	<script src="vendors/fullcalendar/main.min.js"></script>
+    <script src="vendors/daterangepicker/daterangepicker.js"></script>
+	<script src="dist/js/daterangepicker-data.js"></script>
+	<script src="vendors/sweetalert2/dist/sweetalert2.min.js"></script>
+	<script src="dist/js/fullcalendar-init.js"></script>
+	
+	<!-- Bootstrap Notify JS -->
+	<script src="dist/js/bootstrap-notify.min.js"></script>
+
+	<!-- Init JS -->
+	<script src="dist/js/init.js"></script>
+</body>
+</html>
