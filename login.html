@@ -44,7 +44,7 @@
 													<div class="form-label-group">
 														<label>Usuario</label>
 													</div>
-													<input class="form-control" placeholder="Ingresa tu nombre de usuario" value="" type="text">
+													<input class="form-control" id="username" placeholder="Ingresa tu nombre de usuario" value="" type="text">
 												</div>
 												<div class="form-group col-lg-12">
 													<div class="form-label-group">
@@ -52,12 +52,12 @@
 													</div>
 													<div class="input-group password-check">
 														<span class="input-affix-wrapper affix-wth-text">
-															<input class="form-control" placeholder="Ingresa tu contraseña" value="" type="password">
+															<input class="form-control" id="password" placeholder="Ingresa tu contraseña" value="" type="password">
 														</span>
 													</div>
 												</div>
 											</div>
-											<a href="#" class="btn btn-primary btn-uppercase btn-block">Login</a>
+											<button id="loginButton" type="button" class="btn btn-primary btn-uppercase btn-block">Login</button>
 										</div>
 									</div>
 								</form>
@@ -113,5 +113,26 @@
 	
 	<!-- Init JS -->
 	<script src="dist/js/init.js"></script>
+
+	<!-- Inicio de Sesión -->
+	<script>
+		document.getElementById('loginButton').addEventListener('click', function(event) {
+			event.preventDefault();
+
+			var username = document.getElementById('username').value;
+			var password = document.getElementById('password').value;
+
+			if (username === '' || password === '') {
+				// Alerta si algún campo está vacío
+				alert('Por favor, completa todos los campos');
+			} else if (username === 'admin' && password === 'Poli2023') {
+				// Redirige si las credenciales son correctas, se agrega una ruta generica
+				window.location.href = '//D:/Programacion/Universidad/PSP_20_Agenda_de_eventos/index.html';
+			} else {
+				// Alerta si las credenciales son incorrectas
+				alert('Usuario o contraseña incorrectos');
+			}
+		});
+	</script>
 </body>
 </html>
