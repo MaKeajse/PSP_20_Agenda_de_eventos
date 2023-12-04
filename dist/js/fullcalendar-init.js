@@ -40,26 +40,6 @@ document.addEventListener('DOMContentLoaded', function() {
 	droppable: true,	
 	editable: true,
 	events: [
-      {
-		backgroundColor: '#FFC400',
-		borderColor: '#FFC400',
-        title: '9:30 AM - 8:00 PM Conferencia Poli',
-		start: curYear+'-'+curMonth+'-04',
-		end: curYear+'-'+curMonth+'-06',
-	  },
-      {
-		backgroundColor: '#da82f8',
-		borderColor: '#da82f8',
-        title: 'Team Meet',
-        start: curYear+'-'+curMonth+'-13',
-        end: curYear+'-'+curMonth+'-15'
-      },
-      {
-		backgroundColor: '#da82f8',
-		borderColor: '#da82f8',
-        title: 'Reunión del proyecto con los delegados',
-        start: curYear+'-'+curMonth+'-19'
-      },
     ],
 	eventContent: function(arg) {
 	  if (arg.event.extendedProps.toHtml) {

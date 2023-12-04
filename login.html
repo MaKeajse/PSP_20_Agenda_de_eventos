@@ -126,8 +126,18 @@
 				// Alerta si algún campo está vacío
 				alert('Por favor, completa todos los campos');
 			} else if (username === 'admin' && password === 'Poli2023') {
-				// Redirige si las credenciales son correctas, se agrega una ruta generica
-				window.location.href = '//D:/Programacion/Universidad/PSP_20_Agenda_de_eventos/index.html';
+				// Obtiene la ruta actual del navegador
+				var currentPath = window.location.href;
+
+				// Encuentra la última barra en la ruta (para extraer el directorio)
+				var lastIndex = currentPath.lastIndexOf('/');
+				var rootPath = currentPath.substring(0, lastIndex + 1);
+
+				// Almacena la ruta de la raíz en Local Storage
+				localStorage.setItem('rootPath', rootPath);
+
+				// Redirige a 'index.html' en la ruta actual
+				window.location.href = rootPath + 'index.html';
 			} else {
 				// Alerta si las credenciales son incorrectas
 				alert('Usuario o contraseña incorrectos');
